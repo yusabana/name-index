@@ -1,22 +1,18 @@
 class NameIndex
   def self.create_index(names)
     name_values = names.map {|name| NameValue.new(name)}
-    transform(name_values).to_a.sort
+    transform(name_values).to_a
   end
 
   # Dictionaryのコンテンツにマッチしたら出す
   def self.transform(name_values)
-    ret = {}
-
-    name_values.each do |name_value|
+    name_values.each_with_object({}) do |name_value, ret|
       key = Dictionary.get_key(name_value)
       ret[key] ||= []
       ret[key] << name_value.name
-    end
-
-    ret
+      ret[key].sort!
+    end.sort
   end
-
 end
 
 class NameValue
