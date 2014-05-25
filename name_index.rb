@@ -4,7 +4,6 @@ class NameIndex
     transform(name_values).to_a
   end
 
-  # Dictionaryのコンテンツにマッチしたら出す
   def self.transform(name_values)
     name_values.each_with_object({}) do |name_value, ret|
       key = Dictionary.get_key(name_value)
@@ -18,13 +17,11 @@ end
 class NameValue
   attr_accessor :name, :index
 
-  # 濁点付きのの文字列だったら濁点なくした奴に変換する
   def initialize(name)
     @name = name
     @index = name[0]
   end
 end
-
 
 # あ行、か行 などのメタを使って動的生成させるといいかも
 class Dictionary
@@ -53,12 +50,7 @@ class Dictionary
       end
     end
 
-    raise "不正な文字 #{name_value.name}"
+    raise "invalid letter, #{name_value.name}"
   end
 end
 
-class DictionaryKey
-end
-
-class DictionaryContent
-end

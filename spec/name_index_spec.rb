@@ -18,17 +18,8 @@ describe NameIndex do
 end
 
 
-
-describe NameValue do
-
-  describe "濁点付き" do
+describe Dictionary do
+  describe "#get_key" do
     skip
   end
-end
-
-
-
-describe Dictionary do
-
-  describe ""
 end
