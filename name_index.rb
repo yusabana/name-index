@@ -23,7 +23,7 @@ class NameValue
   end
 end
 
-# あ行、か行 などのメタを使って動的生成させるといいかも
+# unicodeの並び順 http://pentan.info/doc/unicode_list.html
 class Dictionary
   @@contents =
     {
