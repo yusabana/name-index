@@ -15,7 +15,7 @@ class NameIndex
 end
 
 class Name
-  attr_accessor :name, :index
+  attr_reader :name, :index
 
   def initialize(name)
     @name = name
