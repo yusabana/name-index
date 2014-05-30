@@ -1,6 +1,6 @@
 class NameIndex
   def self.create_index(names)
-    name_values = names.map {|name| NameValue.new(name)}
+    name_values = names.map {|name| Name.new(name)}
     transform(name_values).to_a
   end
 
@@ -14,7 +14,7 @@ class NameIndex
   end
 end
 
-class NameValue
+class Name
   attr_accessor :name, :index
 
   def initialize(name)
@@ -44,8 +44,8 @@ class Dictionary
   end
 
   def self.get_key(name_value)
-    @@contents.each do |c_key, c_sets|
-      if c_sets.include?(name_value.index)
+    @@contents.each do |c_key, c_range|
+      if c_range.include?(name_value.index)
         return c_key
       end
     end
