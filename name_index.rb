@@ -4,6 +4,7 @@ class NameIndex
   end
 
   def self.transform(name_values)
+    # 事前にソートシておけば並び順のまま処理が実行されるので、最後にソートする必要がない
     sorted_name_values = name_values.sort_by{|name_value| name_value.first}
     sorted_name_values.each_with_object(Hash.new {|h, k| h[k] = []}) do |name_value, result|
       key = Dictionary.get_key(name_value)
