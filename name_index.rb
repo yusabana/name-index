@@ -1,7 +1,7 @@
 class NameIndex
   def self.create_index(names)
     name_values = names.map {|name| Name.new(name)}
-    transform(name_values).to_a
+    transform(name_values)
   end
 
   def self.transform(name_values)
@@ -10,7 +10,7 @@ class NameIndex
       ret[key] ||= []
       ret[key] << name_value.name
       ret[key].sort!
-    end.sort
+    end.sort.to_a
   end
 end
 
