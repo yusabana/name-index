@@ -1,20 +1,20 @@
 class NameIndex
   def self.create_index(names)
-    name_values = names.map {|name| Name.new(name)}
+    name_values = names.map {|name| NameValue.new(name)}
     transform(name_values)
   end
 
   def self.transform(name_values)
-    name_values.each_with_object({}) do |name_value, ret|
+    name_values.each_with_object({}) do |name_value, result|
       key = Dictionary.get_key(name_value)
-      ret[key] ||= []
-      ret[key] << name_value.name
-      ret[key].sort!
+      result[key] ||= []
+      result[key] << name_value.name
+      result[key].sort!
     end.sort.to_a
   end
 end
 
-class Name
+class NameValue
   attr_reader :name, :index
 
   def initialize(name)
@@ -38,10 +38,6 @@ class Dictionary
       "ラ" => "ラ".."ロ",
       "ワ" => "ワ".."ン",
     }
-
-  def self.contents
-    @@contents
-  end
 
   def self.get_key(name_value)
     @@contents.each do |c_key, c_range|
